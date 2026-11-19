@@ -125,7 +125,7 @@ function checkReconciliation(ret: ParsedReturn, issues: Issue[]) {
     );
     if (Math.abs(lineTotal - schedTotal) >= TOLERANCE) {
       issues.push({
-        severity: "error",
+        severity: rule.severity ?? "error",
         rule: "reconciliation",
         sheet: rule.schedule.sheets.join(", "),
         message: `${rule.label}: ${rule.line.sheet} line ${rule.line.codes.join(" + ")} is ${fmt(lineTotal)} but ${rule.schedule.sheets.join(" + ")} ${rule.schedule.column} totals ${fmt(schedTotal)} (difference ${fmt(lineTotal - schedTotal)}).`,

@@ -97,6 +97,13 @@ describe("validateReturn", () => {
     expect(issue?.message).toMatch(new RegExp(code));
   });
 
+  it("reports the sample's placeholder schedules as reconciliation warnings, not errors", () => {
+    const issues = validateReturn(sample()).issues.filter((i) => i.rule === "reconciliation");
+    expect(issues.length).toBeGreaterThan(0);
+    expect(issues.every((i) => i.severity === "warning")).toBe(true);
+    expect(issues.some((i) => i.message.includes("MFCR318"))).toBe(true);
+  });
+
   it("tolerates rounding differences under 1 kobo", () => {
     const r = sample();
     const cash = line(r, "MFCR300", "10140");
