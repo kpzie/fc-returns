@@ -60,6 +60,13 @@ describe("validateReturn", () => {
     expect(rules(r)).toContain("duplicate-code");
   });
 
+  it("allows a repeated code on MFCR100, as in CBN's accepted MFCR100 (code 21180 twice)", () => {
+    const r = sample();
+    const memo = sheet(r, "MFCR100");
+    memo.rows.push({ ...memo.rows.find((x) => x.CODE === "21180")! });
+    expect(rules(r)).not.toContain("duplicate-code");
+  });
+
   it("flags a subtotal that does not add up", () => {
     const r = sample();
     line(r, "MFCR300", "10110").AMOUNT = 999; // notes; TOTAL CASH 10140 no longer = notes + coins

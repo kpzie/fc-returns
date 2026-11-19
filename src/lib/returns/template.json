@@ -17,7 +17,7 @@
         "RISK_RATING",
         "RISK_DIRECTION"
       ],
-      "uniqueCodes": true
+      "uniqueCodes": false
     },
     {
       "id": "MFCR1000",
