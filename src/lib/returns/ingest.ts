@@ -2,7 +2,8 @@ import { createHash, randomUUID } from "node:crypto";
 import { parseWorkbook } from "./parse";
 import { validateReturn } from "./validate";
 import { computeKpis } from "./kpis";
-import type { ReturnRecord, ReturnStore } from "../store/types";
+import { authorize, type Actor } from "../auth/roles";
+import { personOf, type ReturnRecord, type ReturnStore, type ReturnSummary } from "../store/types";
 
 export class DuplicateUploadError extends Error {
   constructor(public readonly existingId: string, existingVersion: number) {
@@ -12,7 +13,8 @@ export class DuplicateUploadError extends Error {
 }
 
 /** Parse, validate and store one uploaded workbook. Each upload for a period becomes a new version. */
-export async function ingestWorkbook(file: Buffer, fileName: string, store: ReturnStore): Promise<ReturnRecord> {
+export async function ingestWorkbook(file: Buffer, fileName: string, store: ReturnStore, actor: Actor | null): Promise<ReturnRecord> {
+  authorize(actor, "upload");
   const fileSha256 = createHash("sha256").update(file).digest("hex");
   const dup = await store.findByHash(fileSha256);
   if (dup) throw new DuplicateUploadError(dup.id, dup.version);
@@ -32,6 +34,8 @@ export async function ingestWorkbook(file: Buffer, fileName: string, store: Retu
     fileSha256,
     uploadedAt: new Date().toISOString(),
     submittedAt: null,
+    uploadedBy: personOf(actor),
+    submittedBy: null,
     counts: validation.counts,
     issues: validation.issues,
     kpis: computeKpis(parsed),
@@ -39,4 +43,10 @@ export async function ingestWorkbook(file: Buffer, fileName: string, store: Retu
   };
   await store.insert(record, file);
   return record;
+}
+
+/** Record that a version was filed with CBN. Approvers only; refuses a return with validation errors. */
+export async function submitReturn(id: string, store: ReturnStore, actor: Actor | null): Promise<ReturnSummary> {
+  authorize(actor, "submit");
+  return store.markSubmitted(id, actor);
 }

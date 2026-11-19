@@ -1,12 +1,19 @@
 import Link from "next/link";
 import UploadForm from "@/components/UploadForm";
+import { redirect } from "next/navigation";
 import { getStore } from "@/lib/store";
+import { getActor } from "@/lib/auth/session";
+import { can } from "@/lib/auth/roles";
+import NoAccess from "@/components/NoAccess";
 import { STATUS_LABEL, formatDateTime, formatPeriod } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const returns = await getStore().list();
+  const actor = await getActor();
+  if (!actor) redirect("/login");
+  if (!can(actor, "view")) return <NoAccess />;
+  const returns = await (await getStore()).list();
 
   return (
     <>
@@ -17,7 +24,13 @@ export default async function Home() {
         </p>
       </div>
 
-      <UploadForm />
+      {can(actor, "upload") ? (
+        <UploadForm />
+      ) : (
+        <p className="alert info" style={{ margin: 0 }}>
+          You can review returns. Uploading needs the uploader role.
+        </p>
+      )}
 
       <section className="card">
         <h2>Uploaded returns</h2>
@@ -56,6 +69,7 @@ export default async function Home() {
                   <td className="small">
                     {formatDateTime(r.uploadedAt)}
                     <div className="muted small">{r.fileName}</div>
+                    {r.uploadedBy && <div className="muted small">by {r.uploadedBy.email}</div>}
                   </td>
                 </tr>
               ))}
