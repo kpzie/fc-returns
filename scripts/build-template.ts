@@ -7,6 +7,9 @@ import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { parseWorkbook } from "../src/lib/returns/parse";
 
+/** CBN-accepted XML repeats a code on these sheets (MFCR100: 21180 twice), so codes must not be forced unique. */
+const CODES_MAY_REPEAT = new Set(["MFCR100"]);
+
 async function main() {
   const file = process.argv[2];
   if (!file) throw new Error("Usage: build-template.ts <workbook.xlsx>");
@@ -17,7 +20,7 @@ async function main() {
     sheets: parsed.sheets.map((s) => {
       const codes = s.kind === "line-items" ? s.rows.map((r) => r.CODE).filter((c) => c !== null) : [];
       // Some line-item sheets list a code once per item (e.g. MFCR356); only enforce uniqueness where the template does.
-      const uniqueCodes = s.kind === "line-items" && new Set(codes).size === codes.length;
+      const uniqueCodes = s.kind === "line-items" && !CODES_MAY_REPEAT.has(s.id) && new Set(codes).size === codes.length;
       return { id: s.id, description: s.description, kind: s.kind, columns: s.columns, uniqueCodes };
     }),
   };
