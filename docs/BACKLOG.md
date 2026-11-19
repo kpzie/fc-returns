@@ -3,7 +3,7 @@
 Ordered by priority. ⛔ = blocked on the client/CBN.
 
 ## P0 — before any real data
-1. **Run SupabaseStore against a live project.** Apply the migrations, sign in as an uploader and an approver end to end (login, upload, submit, RLS, session refresh in middleware), add an integration test (skipped unless `SUPABASE_URL` is set) mirroring `test/ingest.test.ts`.
+1. **Run SupabaseStore against a live project.** The test is written: `test/supabase-live.test.ts` (skipped unless `SUPABASE_TEST_*` is set, see README). Still to do, needs a dedicated Supabase test project: apply the migrations, run that test and fix what it finds, then sign in through the UI as an uploader and an approver (login page, session refresh in middleware, upload, submit).
 2. **Test with a real filled return** (anonymised). Expect to tune: header detection, numeric/date column rules, `uniqueCodes`, reconciliation rules. Add it as a fixture only if fully anonymised.
 
 ## P1 — correctness

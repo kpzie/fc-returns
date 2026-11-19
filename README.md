@@ -15,7 +15,7 @@ Web app for a CBN-licensed finance company's monthly return (MFCR/SFCR workbook,
 |---|---|
 | Parser, validation, KPIs, versioning, UI | Built and tested against the sample template |
 | XML export | Matches the 69 CBN-accepted MFCR files (structure for all, byte-for-byte for the 38 whose data matches the sample workbook). SFCR files are kept in a separate `SFCR-format-not-verified/` folder until confirmed. No XSD exists. |
-| Supabase store | Written and type-checked, **not yet run against a live project** |
+| Supabase store | Written and type-checked. End-to-end test written (`test/supabase-live.test.ts`) but **not yet run against a live project** |
 | Login / roles | Supabase Auth (email + password). Roles `uploader` / `approver`, enforced in the app and again by RLS (tested against real Postgres via PGlite). Not yet run against a live project. |
 | KPI list | Proposed set. Needs management sign-off. |
 | Validation rules | Taken from the template's line descriptions. Each rule was checked against the template's own sample figures. Extend as CBN feedback comes in (`src/lib/returns/rules.ts`). |
@@ -41,6 +41,19 @@ npm run dev       # http://localhost:3000 (uploads stored in ./.data; no login, 
    ```
 
    A user can hold both roles. A signed-in user with no role sees nothing. Remove access with `delete from public.fc_user_roles ...`.
+
+### Checking a Supabase project end to end
+
+`test/supabase-live.test.ts` signs in as an uploader, an approver and a user with no role, then uploads, reads, submits and checks
+every refusal against the real project (Auth, RLS, Storage, `fc_submit_return`). It is skipped unless these are set:
+
+```bash
+SUPABASE_TEST_URL=https://<test-project>.supabase.co SUPABASE_TEST_ANON_KEY=... SUPABASE_TEST_SERVICE_ROLE_KEY=... \
+  npx vitest run test/supabase-live.test.ts
+```
+
+Use a **separate test project** with the migrations applied, never production: each run leaves one submitted (locked) return under a
+throwaway FC code starting with 9, and creates or reuses three `fc-it-*@example.test` users.
 
 ### Who can do what
 
