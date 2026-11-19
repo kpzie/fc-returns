@@ -102,6 +102,32 @@ export const RECONCILIATION_RULES: ReconciliationRule[] = [
     schedule: { sheets: ["MFCR381"], column: "OUTSTANDING_AMOUNT" },
     label: "Total borrowings = MFCR381 schedule",
   },
+  // Checked against the sample workbook AND CBN's accepted call reports (test/fixtures/accepted-xml): both reconcile.
+  {
+    line: { sheet: "MFCR300", codes: ["10380"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR316"], column: "CARRYING_VALUE" },
+    label: "Total derivative financial assets = MFCR316 carrying value",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["11730", "11740"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR338"], column: "OUTSTANDING_AMOUNT" },
+    label: "Loans to other financial institutions = MFCR338 schedule",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["11750", "11760", "11770", "11780"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR346"], column: "TOTAL_OUTSTANDING" },
+    label: "Loans to subsidiary and associate companies = MFCR346 schedule",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["11790"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR348"], column: "OUTSTANDING_AMOUNT" },
+    label: "Loans to other entities outside Nigeria = MFCR348 schedule",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["11870", "11890", "11900"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR353"], column: "OUTSTANDING_AMOUNT" },
+    label: "Cheques purchased, advances under leases and factored debts = MFCR353 schedule",
+  },
 ];
 
 /** Money amounts are compared to the nearest kobo. */
