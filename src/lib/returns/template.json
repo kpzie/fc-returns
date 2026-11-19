@@ -1,0 +1,1508 @@
+{
+  "source": "sample-return.xlsx",
+  "generatedAt": "2026-11-19",
+  "sheets": [
+    {
+      "id": "MFCR100",
+      "description": "Monthly Financial Return - Call Report (MFCR 100) - Memorandum Items",
+      "kind": "line-items",
+      "columns": [
+        "CODE",
+        "ITEM_DESCRIPTION",
+        "CURRENT_MONTH_NUMBER",
+        "CURRENT_MONTH_VALUE",
+        "CUMMULATIVE_TO_DATE_NUMBER",
+        "CUMMULATIVE_TO_DATE_VALUE",
+        "DATE",
+        "RISK_RATING",
+        "RISK_DIRECTION"
+      ],
+      "uniqueCodes": true
+    },
+    {
+      "id": "MFCR1000",
+      "description": "STATEMENT OF COMPREHENSIVE INCOME",
+      "kind": "line-items",
+      "columns": [
+        "CODE",
+        "ITEM_DESCRIPTION",
+        "CURRENT_MONTH",
+        "YEAR_TO_DATE"
+      ],
+      "uniqueCodes": true
+    },
+    {
+      "id": "MFCR1002",
+      "description": "Monthly Financial Return - Call Report (MFCR 1002). Income from Government Securities.",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "ITEM_DESCRIPTION",
+        "BOOK_VALUE",
+        "COUPON_RATE",
+        "INTEREST_INCOME_CURRENT_MONTH",
+        "FAIR_VALUE_GAIN_LOSS_CURRENT_MONTH",
+        "GAIN_LOSS_ON_DISPOSAL_CURRENT_MONTH",
+        "TOTAL_AMOUNT_CURRENT_MONTH",
+        "INTEREST_INCOME_YEAR_TO_DATE",
+        "FAIR_VALUE_GAIN_LOSS_YEAR_TO_DATE",
+        "GAIN_LOSS_ON_DISPOSAL_YEAR_TO_DATE",
+        "TOTAL_AMOUNT_YEAR_TO_DATE"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR1004",
+      "description": "Monthly Financial Return - Call Report (MFCR 1004). Other Interest Income.",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "ITEM_DESCRIPTION",
+        "CURRENT_MONTH_AMOUNT",
+        "YEAR_TO_DATE_AMOUNT"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR1006",
+      "description": "Monthly Financial Return - Call Report (MFCR 1006). Breakdown of Interest Income.",
+      "kind": "line-items",
+      "columns": [
+        "CODE",
+        "ITEM_DESCRIPTION",
+        "LATEST_MONTH_AMOUNT",
+        "YEAR_TO_DATE_AMOUNT"
+      ],
+      "uniqueCodes": true
+    },
+    {
+      "id": "MFCR1008",
+      "description": "Monthly Financial Return - Call Report (MFCR 1008). Other Interest Expense.",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "ITEM_DESCRIPTION",
+        "CURRENT_MONTH_AMOUNT",
+        "YEAR_TO_DATE_AMOUNT"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR1010",
+      "description": "Monthly Financial Return - Call Report (MFCR 1010). Breakdown of Trading Income on Fixed Income Securities.",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "ITEM_DESCRIPTION",
+        "CURRENT_MONTH_AMOUNT",
+        "YEAR_TO_DATE_AMOUNT"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR1012",
+      "description": "Monthly Financial Return - Call Report (MFCR 1012). Other Fees.",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "ITEM_DESCRIPTION",
+        "CURRENT_MONTH_AMOUNT",
+        "YEAR_TO_DATE_AMOUNT"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR1014",
+      "description": "Monthly Financial Return - Call Report (MFCR 1014). Equity Investment Income.",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "COMPANY_NAME",
+        "TYPE_OF_BUSINESS",
+        "AMOUNT_INVESTED",
+        "PERCENTAGE_HOLDING",
+        "CARRYING_VALUE",
+        "DISPOSAL_VALUE",
+        "DIVIDEND_INCOME",
+        "CURRENT_MONTH_TRADING_INCOME",
+        "YEAR_TO_DATE_TRADING_INCOME"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR1016",
+      "description": "OTHER TRADING INCOME",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "ITEM_DESCRIPTION",
+        "TYPE_OF_INCOME",
+        "CURRENT_MONTH_AMOUNT",
+        "YEAR_TO_DATE_AMOUNT"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR1018",
+      "description": "Monthly Financial Return - Call Report (MFCR 1018). Other Income.",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "ITEM_DESCRIPTION",
+        "CURRENT_MONTH_AMOUNT",
+        "YEAR_TO_DATE_AMOUNT"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR1020",
+      "description": "Other Operating Expenses",
+      "kind": "line-items",
+      "columns": [
+        "CODE",
+        "ITEM_DESCRIPTION",
+        "AMOUNT"
+      ],
+      "uniqueCodes": true
+    },
+    {
+      "id": "MFCR1022",
+      "description": "Fair value gain/ loss on financial Assets",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "ITEM_DESCRIPTION",
+        "CURRENT_MONTH_AMOUNT",
+        "YEAR_TO_DATE_AMOUNT"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR1024",
+      "description": "Gain / loss on disposal of instruments, BREAKDOWN OF DEPRECIATION AND AMORTIZATION",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "ITEM_DESCRIPTION",
+        "CURRENT_MONTH_AMOUNT",
+        "YEAR_TO_DATE_AMOUNT"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR1026",
+      "description": "Fair value gain/ loss on financial liabilities, BREAKDOWN OF ADMINISTRATIVE EXPENSES",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "ITEM_DESCRIPTION",
+        "CURRENT_MONTH_AMOUNT",
+        "YEAR_TO_DATE_AMOUNT"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR1028",
+      "description": "BREAKDOWN OF FINANCE COSTS",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "ITEM_DESCRIPTION",
+        "CURRENT_MONTH_AMOUNT",
+        "YEAR_TO_DATE_AMOUNT"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR1510",
+      "description": "SCHEDULE OF CREDIT TO DIRECTORS/EMPLOYEES/SHAREHOLDERS/RELATED INTEREST",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "ACCOUNT_NUMBER",
+        "CUSTOMER_NAME",
+        "AMOUNT_GRANTED",
+        "RELATIONSHIP_TO_INSTITUTION",
+        "DATE_GRANTED",
+        "EXPIRY_DATE",
+        "PRINCIPAL_PAYABLE",
+        "ACCRUED_INTEREST",
+        "TOTAL_PRINCIPAL_AND_INTEREST_PAYABLE",
+        "INTEREST_RATE",
+        "PERFECTED_SECURITY_NATURE",
+        "PERFECTED_SECURITY_VALUE",
+        "PERFECTED_SECURITY_DATE_OF_VALIDATION",
+        "PERFECTED_SECURITY_AMOUNT",
+        "REMARKS"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR1520",
+      "description": "Monthly Financial Return - Call Report (MFCR 1520). Contains credit information, borrowing data, staff statistics, and examination details.",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "CUSTOMERS_NAME",
+        "TYPE_OF_FACILITY",
+        "AMOUNT_AUTHORISED",
+        "DATE_AUTHORISED",
+        "EXPIRY_DATE",
+        "UNUTILISED_CREDIT",
+        "OUTSTANDING_CREDIT",
+        "TOTAL_CREDIT",
+        "CREDIT_PERFORMANCE_STATUS",
+        "CREDIT_DATE_UTILISATION_EXCEEDED_LIMIT",
+        "CBN_APPROVAL",
+        "REMARKS",
+        "PAID_UP_CAPITAL",
+        "LENDING_LIMIT"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR1530",
+      "description": "RETURNS ON BORROWINGS",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "CUSTOMER",
+        "AMOUNT_BORROWED",
+        "CERTIFICATE_NUMBER",
+        "TENOR",
+        "EFFECTIVE_DATE",
+        "MATURITY_DATE",
+        "INTEREST_RATE",
+        "UPFRONT_INTEREST_PAID",
+        "ACCRUED_INTEREST_PAYABLE",
+        "TIMES_ROLLED_OVER",
+        "REMARK"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR1540",
+      "description": "STATEMENT OF MATURITY PROFILE OF FINANCIAL ASSETS AND LIABILITIES",
+      "kind": "line-items",
+      "columns": [
+        "CODE",
+        "ITEM_DESCRIPTION",
+        "TENOR_ZERO_THIRTY_DAYS",
+        "TENOR_THIRTY_ONE_TO_NINETY_DAYS",
+        "TENOR_NINETY_ONE_TO_HUNDRED_AND_EIGHTY_DAYS",
+        "TENOR_HUNDRED_AND_EIGHTY_ONE_TO_365_DAYS",
+        "ABOVE_ONE_YR_BELOW_THREE_YRS",
+        "THREE_YRS_AND_ABOVE",
+        "TOTAL"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR1550",
+      "description": "RETURN ON CREDIT - BY SECTOR & LOAN TYPE",
+      "kind": "line-items",
+      "columns": [
+        "CODE",
+        "ANALYSIS_OF_CREDIT_BY_SECTOR_AND_TYPE",
+        "CURRENCY_TYPE",
+        "TERM_LOAN",
+        "OVERDRAFT",
+        "OTHERS_LOANS_AND_ADVANCES",
+        "ADVANCES_UNDER_LEASE",
+        "BANKERS_ACCEPTANCES",
+        "COMMERCIAL_PAPERS",
+        "BILLS_DISCOUNTED",
+        "OTHERS",
+        "PERFORMING",
+        "WATCHLIST",
+        "SUBSTANDARD",
+        "DOUBTFUL",
+        "VERY_DOUBTFUL",
+        "LOST",
+        "TOTAL"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR1570",
+      "description": "RETURN ON FRAUDS AND FORGERIES",
+      "kind": "schedule",
+      "columns": [
+        "SURNAME",
+        "FIRST_NAME",
+        "MIDDLE_NAME",
+        "DESIGNATION",
+        "SEX",
+        "DATE_OF_BIRTH",
+        "NATIONALITY",
+        "STATE_OF_ORIGIN",
+        "PASSPORT_NUMBER",
+        "NATIONAL_ID_CARD_NUMBER",
+        "BRANCH_NAME",
+        "BRANCH_CODE",
+        "STATE_CODE",
+        "DEPARTMENT",
+        "DATE_OF_FRAUD",
+        "TYPE_OF_FRAUD",
+        "DATE_DISCOVERED",
+        "AMOUNT_INVOLVED",
+        "STATUS",
+        "AMOUNT_RECOVERED",
+        "ACTUAL_LOSS",
+        "ACTION_TYPE",
+        "ACTION_DATE"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR1590",
+      "description": "RETURN ON DISMISSED/TERMINATED STAFF",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "EX_STAFF_SURNAME",
+        "EX_STAFF_FIRST_NAME",
+        "EX_STAFF_MIDDLE_NAME",
+        "EX_STAFF_CODE_NUMBER",
+        "DESIGNATION",
+        "PERMANENT_HOME_ADDRESS",
+        "DATE_OF_BIRTH",
+        "STAFF_NAME",
+        "BRANCH_NAME",
+        "DEPARTMENT",
+        "PREVIOUS_WORK_ORGANISATION",
+        "PREVIOUS_WORK_ADDRESS",
+        "PREVIOUS_WORK_PERIOD_FROM",
+        "PREVIOUS_WORK_PERIOD_TO",
+        "DATE_TERMINATED_DISMISSED",
+        "REASON_FOR_TERMINATION_DISMISSAL",
+        "FRAUD_TYPE",
+        "NEXT_OF_KIN_SURNAME",
+        "NEXT_OF_KIN_FIRST_NAME",
+        "NEXT_OF_KIN_MIDDLE_NAME"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR1600",
+      "description": "RETURNS ON CONSUMER COMPLAINTS",
+      "kind": "schedule",
+      "columns": [
+        "COMPLAINT_REF_NO",
+        "NAME_OF_PETITIONER",
+        "ADDRESS_CONTACT_DETAILS",
+        "EMAIL_ADDRESS",
+        "SUBJECT",
+        "CATEGORY",
+        "DATE_RECEIVED",
+        "STATUS_RESOLVED_DATE",
+        "STATUS_UNRESOLVED_EFFORTS",
+        "MAJOR_AREAS_OF_DISAGREEMENT",
+        "CURRENCY_TYPE",
+        "AMOUNT_CLAIMED",
+        "AMOUNT_REFUNDED"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR1610",
+      "description": "RETURNS ON TOTAL LOANS AND ADVANCES GRANTED TO/OUTSTANDING BONDS AGAINST STATE GOVERNMENT AND FCT",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "STATE",
+        "STATE_CODE",
+        "PARASTATAL_TERM_LOAN_UP_TO_TWO_YRS",
+        "PARASTATAL_TERM_LOAN_TWO_FIVE_YRS",
+        "PARASTATAL_TERM_LOAN_FIVE_TEN_YRS",
+        "PARASTATAL_TERM_LOAN_OVER_TEN_YRS",
+        "PARASTATAL_TERM_LOAN_SUB_TOTAL",
+        "PARASTATAL_OVERDRAFT",
+        "PARASTATAL_OTHERS",
+        "PARASTATAL_TOTAL",
+        "STATE_GOV_TERM_LOAN_UP_TO_TWO_YRS",
+        "STATE_GOVT_TERM_LOAN_TWO_FIVE_YRS",
+        "STATE_GOVT_TERM_LOAN_FIVE_TEN_YRS",
+        "STATE_GOVT_TERM_LOAN_OVER_TEN_YRS",
+        "STATE_GOV_TERM_LOAN_SUB_TOTAL",
+        "STATE_GOV_OVERDRAFT",
+        "STATE_GOV_OTHERS",
+        "STATE_GOV_TOTAL",
+        "OUTSTANDING_BONDS_UP_TO_TWO_YRS",
+        "OUTSTANDING_BONDS_TWO_FIVE_YRS",
+        "OUTSTANDING_BONDS_FIVE_TEN_YRS",
+        "OUTSTANDING_BONDS_OVER_TEN_YRS",
+        "GRAND_TOTAL"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR1620",
+      "description": "Monthly Financial Return - Call Report (MFCR 1620). Contains credit information, borrowing data, staff statistics, and examination details.",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "STATE_CODE",
+        "LOCAL_GOVERNMENT_CODE",
+        "TERM_LOAN_UP_TO_TWO_YRS",
+        "TERM_LOAN_TWO_FIVE_YRS",
+        "TERM_LOAN_FIVE_TEN_YRS",
+        "TERM_LOAN_OVER_TEN_YRS",
+        "OVERDRAFT",
+        "OTHERS",
+        "LOAN_TOTAL",
+        "BONDS_UP_TO_TWO_YRS",
+        "BONDS_TWO_FIVE_YRS",
+        "BONDS_FIVE_TEN_YRS",
+        "BONDS_OVER_TEN_YRS",
+        "GRAND_TOTAL"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR1630",
+      "description": "OTHER_DOMESTIC_SECTORS_FCY",
+      "kind": "schedule",
+      "columns": [
+        "ITEM_DESCRIPTION",
+        "CENTRAL_BANK_OF_NIGERIA_NGN",
+        "CENTRAL_BANK_OF_NIGERIA_FCY",
+        "OTHER_DEPOSITORY_CORPORATIONS_NGN",
+        "OTHER_DEPOSITORY_CORPORATIONS_FCY",
+        "OTHER_FINANCIAL_CORPORATIONS_NGN",
+        "OTHER_FINANCIAL_CORPORATIONS_FCY",
+        "PUBLIC_NON_FINANCIAL_CORPORATIONS_NGN",
+        "PUBLIC_NON_FINANCIAL_CORPORATIONS_FCY",
+        "OTHER_DOMESTIC_SECTORS_NGN",
+        "OTHER_DOMESTIC_SECTORS_FCY",
+        "CENTRAL_GOVERNMENT_NGN",
+        "CENTRAL_GOVERNMENT_FCY",
+        "STATE_GOVERNMENT_NGN",
+        "STATE_GOVERNMENT_FCY",
+        "LOCAL_GOVERNMENT_NGN",
+        "LOCAL_GOVERNMENT_FCY",
+        "OTHER_RESIDENTS_NGN",
+        "OTHER_RESIDENTS_FCY",
+        "NON_RESIDENTS_NGN",
+        "NON_RESIDENTS_FCY"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR1640",
+      "description": "DETAILED LOAN PORTFOLIO SCHEDULE",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "CUSTOMER_CODE",
+        "CUSTOMER_NAME",
+        "TOTAL_CREDIT",
+        "PRINCIPAL_PAYMENT_DUE_AND_UNPAID",
+        "ACCRUED_INTEREST_UNPAID",
+        "TOTAL_OUTSTANDING_CREDITS",
+        "WATCHLIST",
+        "SUBSTANDARD",
+        "DOUBTFUL",
+        "VERY_DOUBTFUL",
+        "LOST",
+        "FC_PROVISION",
+        "REMARKS"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR300",
+      "description": "MFCR300 flat structure: fields only, not nested, for all CALLREPORT_DATA items.",
+      "kind": "line-items",
+      "columns": [
+        "CODE",
+        "ITEM_DESCRIPTION",
+        "AMOUNT"
+      ],
+      "uniqueCodes": true
+    },
+    {
+      "id": "MFCR302",
+      "description": "Monthly Financial Return - Call Report (MFCR 302). Contains Schedule of Banks Held in Banks.",
+      "kind": "schedule",
+      "columns": [
+        "INSTITUTION_CODE",
+        "NAME_OF_INSTITUTION",
+        "INSTITUTION_TYPE_CODE",
+        "CURRENCY_CODE",
+        "ACCOUNT_NUMBER",
+        "AMOUNT",
+        "CLEARED_UNCLEARED"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR304",
+      "description": "Schedule Of Money At Call with Banks (MFCR 304). Contains details of finance company transactions with banks.",
+      "kind": "schedule",
+      "columns": [
+        "INSTITUTION_CODE",
+        "BANK_NAME",
+        "TYPE_OF_CALL_MONEY",
+        "TRANSACTION_EFFECTIVE_DATE",
+        "REFERENCE",
+        "COLLATERAL_TYPE",
+        "COLLATERAL_VALUE",
+        "TENOR_DAYS",
+        "AMOUNT"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR308",
+      "description": "Monthly Financial Return - Call Report (MFCR 308).Contains Schedule of placement with Banks.",
+      "kind": "schedule",
+      "columns": [
+        "INSTITUTION_CODE",
+        "TYPE_OF_INSTITUTION",
+        "NAME_OF_INSTITUTION",
+        "TYPE_OF_PLACEMENT",
+        "TRANSACTION_ID_REFERENCE",
+        "COLLATERAL_TYPE",
+        "EFFECTIVE_DATE_OF_TRANSACTION",
+        "TENOR_DAYS",
+        "CURRENCY_TYPE",
+        "AMOUNT"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR316",
+      "description": "Monthly Financial Return - Call Report (MFCR 316).Contains Schedule of Derivative financial assets.",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "DERIVATIVE_FINANCIAL_ASSETS",
+        "MEASUREMENT_CLASSIFICATION",
+        "TYPES_OF_DERIVATIVE",
+        "COUNTER_PARTY",
+        "NOTIONAL_AMOUNT",
+        "CURRENCY_TYPE",
+        "CARRYING_VALUE"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR318",
+      "description": "Monthly Financial Return - Call Report (MFCR 318).",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "TYPE",
+        "MEASUREMENT_TYPE",
+        "DESCRIPTION",
+        "DATE_OF_PURCHASE",
+        "TENOR_DAYS",
+        "COUPON_RATE",
+        "FACE_VALUE",
+        "PURCHASE_PRICE",
+        "BOOK_VALUE",
+        "PAR_VALUE_UNITS",
+        "MATURITY_DATE",
+        "MARKET_PRICE_AS_AT_THE_END_OF_THE_REPORTING_QUARTER",
+        "MARKET_VALUE",
+        "GAIN_LOSS_ON_MTM",
+        "IMPAIRMENT",
+        "NET_CARRYING_VALUE"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR320",
+      "description": "Monthly Financial Return - Call Report (MFCR 320).",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "COUNTERPARTY",
+        "TYPE",
+        "MEASUREMENT_TYPE",
+        "DESCRIPTION",
+        "DATE_OF_PURCHASE",
+        "COUPON_RATE",
+        "MATURITY",
+        "TENOR_DAYS",
+        "FACE_VALUE",
+        "PURCHASE_PRICE",
+        "BOOK_VALUE",
+        "PAR_VALUE",
+        "MATURITY_DATE",
+        "MARKET_PRICE_AS_AT_THE_END_OF_THE_REPORTING_QUARTER",
+        "MARKET_VALUE",
+        "GAIN_LOSS_ON_MTM",
+        "IMPAIRMENT",
+        "NET_CARRYING_VALUE"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR330",
+      "description": "Monthly Financial Return - Call Report (MFCR 330) - Treasury Certificate & Omo Bills",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "INVESTMENT",
+        "TYPE",
+        "MEASUREMENT_TYPE",
+        "DESCRIPTION",
+        "DATE_OF_PURCHASE",
+        "TENOR_IN_DAYS",
+        "COUPON",
+        "FACE_VALUE",
+        "PURCHASE_PRICE",
+        "BOOK_VALUE",
+        "PAR_VALUE",
+        "MATURITY_DATE",
+        "MARKET_PRICE_AS_AT_THE_REPORTING_QUARTER",
+        "MARKET_VALUE",
+        "GAIN_OR_LOSS_ON_MTM",
+        "IMPAIRMENT",
+        "NET_CARRYING_VALUE"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR334",
+      "description": "Monthly Financial Return - Call Report (MFCR 334). Schedule of certificate of deposits",
+      "kind": "schedule",
+      "columns": [
+        "DEPOSIT_TYPE",
+        "INSTITUTION_CODE",
+        "INSTITUTION_NAME",
+        "EFFECTIVE_DATE_OF_TRANSACTION",
+        "CURRENCY_TYPE",
+        "AMOUNT"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR336",
+      "description": "Monthly Financial Return - Call Report (MFCR 336).",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "INVESTMENT_TYPE",
+        "MEASUREMENT_TYPE",
+        "DESCRIPTION",
+        "DATE_OF_PURCHASE",
+        "TENOR_DAYS",
+        "COUPON",
+        "FACE_VALUE",
+        "PURCHASE_PRICE",
+        "BOOK_VALUE",
+        "PAR_VALUE",
+        "MATURITY_DATE",
+        "MARKET_PRICE_AS_AT_THE_END_OF_REPORTING_MONTH",
+        "MARKET_VALUE",
+        "GAIN_LOSS_ON_MTM",
+        "IMPAIRMENT",
+        "NET_CARRYING_VALUE"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR338",
+      "description": "Monthly Financial Return - Call Report (MFCR 338). Schedule Of Loans And Receivables - Other Financial Institutions",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "INSTITUTION_NAME",
+        "ACCOUNT_NUMBER",
+        "IN_OUT_OF_NIGERIA",
+        "PURPOSE",
+        "TYPE_OF_FACILITY",
+        "CURRENCY_TYPE",
+        "RELATIONSHIP",
+        "TENOR",
+        "DATE_GRANTED",
+        "APPROVED_LIMIT",
+        "AMOUNT_GRANTED",
+        "OUTSTANDING_AMOUNT",
+        "PERFORMING",
+        "WATCHLIST",
+        "SUBSTANDARD",
+        "DOUBTFUL",
+        "VERY_DOUBTFUL",
+        "LOST"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR340",
+      "description": "Monthly Financial Return - Call Report (MFCR 340).Breakdown of Loans and receivables - SUBSIDIARY/ASSOCIATE",
+      "kind": "schedule",
+      "columns": [
+        "ITEM_CODE",
+        "ITEM_DESCRIPTION",
+        "NAME_OF_AFFILIATE",
+        "TERM_LOAN",
+        "OVERDRAFT",
+        "LOAN_OTHERS",
+        "ADVANCES_UNDER_LEASE",
+        "BANKERS_ACCEPTANCES",
+        "COMMERCIAL_PAPERS",
+        "BILLS_DISCOUNTED",
+        "OTHERS",
+        "TOTAL"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR346",
+      "description": "Monthly Financial Return - Call Report (MFCR 346).Breakdown of Loans and receivables - SUBSIDIARY/ASSOCIATE",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "NAME_OF_AFFILIATE",
+        "RELATIONSHIP_TYPE",
+        "RESIDENCE",
+        "CURRENCY_TYPE",
+        "TERM_LOAN",
+        "OVERDRAFT",
+        "OTHERS",
+        "ADVANCES_UNDER_LEASE",
+        "BANKERS_ACCEPTANCES",
+        "COMMERCIAL_PAPERS",
+        "BILLS_DISCOUNTED",
+        "TOTAL_OUTSTANDING",
+        "PERFORMING",
+        "WATCHLIST",
+        "SUBSTANDARD",
+        "DOUBTFUL",
+        "VERY_DOUBTFUL",
+        "LOST"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR348",
+      "description": "Monthly Financial Return - Call Report (MFCR 348).",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "OBLIGOR",
+        "PURPOSE",
+        "SECTOR",
+        "SUBSECTOR",
+        "TENOR",
+        "DATE_GRANTED",
+        "MATURITY_DATE",
+        "APPROVED_LIMIT",
+        "CARRYING_AMOUNT",
+        "APPROVED_AMOUNT",
+        "CURRENCY_TYPE",
+        "OUTSTANDING_AMOUNT",
+        "TERM_LOAN",
+        "OVERDRAFT",
+        "ADVANCES_UNDER_LEASE",
+        "BANKERS_ACCEPTANCES",
+        "COMMERCIAL_PAPERS",
+        "BILLS_DISCOUNTED",
+        "OTHERS",
+        "PERFORMING",
+        "WATCHLIST",
+        "SUBSTANDARD",
+        "DOUBTFUL",
+        "VERY_DOUBTFUL",
+        "LOST"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR349",
+      "description": "SCHEDULE OF LOANS AND RECEIVABLES - OTHER CUSTOMERS",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "OBLIGOR",
+        "ACCOUNT_NUMBER",
+        "FACILITY_TYPE",
+        "PURPOSE",
+        "CURRENCY_TYPE",
+        "SECTOR",
+        "SUBSECTOR",
+        "TENOR",
+        "DATE_GRANTED",
+        "MATURITY_DATE",
+        "APPROVED_LIMIT",
+        "APPROVED_AMOUNT",
+        "OUTSTANDING_AMOUNT_PRINCIPAL",
+        "OUTSTANDING_AMOUNT_ACCRUED_INTEREST",
+        "TOTAL_OUTSTANDING_AMOUNT",
+        "TERM_LOAN",
+        "OVERDRAFT",
+        "ADVANCES_UNDER_LEASE",
+        "BANKERS_ACCEPTANCES",
+        "COMMERCIAL_PAPERS",
+        "BILLS_DISCOUNTED",
+        "OTHERS",
+        "PERFORMING",
+        "WATCHLIST",
+        "SUBSTANDARD",
+        "DOUBTFUL",
+        "VERY_DOUBTFUL",
+        "LOST"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR350",
+      "description": "Monthly Financial Return - Call Report (MFCR 350).",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "OBLIGOR_NAME",
+        "ACCOUNT_NUMBER",
+        "OPENING_CARRYING_AMOUNT",
+        "IMPAIRMENT_BALANCE_OPENING",
+        "IMPAIRMENT_CHARGE_FOR_THE_MONTH",
+        "RECOVERIES_FOR_THE_MONTH",
+        "WRITE_BACK",
+        "WRITE_OFF",
+        "IMPAIRMENT_BALANCE_CLOSING",
+        "NET_CARRYING_AMOUNT"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR351",
+      "description": "Monthly Financial Return - Call Report (MFCR 351) - Schedule of Loans & Receivables - Government",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "OBLIGOR",
+        "PURPOSE",
+        "TIER_OF_GOVERNMENT",
+        "SUBSECTOR",
+        "TENOR",
+        "DATE_GRANTED",
+        "MATURITY_DATE",
+        "APPROVED_LIMIT",
+        "APPROVED_AMOUNT",
+        "TERM_LOAN",
+        "OVERDRAFT",
+        "ADVANCES_UNDER_LEASE",
+        "BANKERS_ACCEPTANCES",
+        "COMMERCIAL_PAPERS",
+        "BILLS_DISCOUNTED",
+        "OTHERS",
+        "OUTSTANDING_AMOUNT",
+        "PERFORMING",
+        "WATCHLIST",
+        "SUBSTANDARD",
+        "DOUBTFUL",
+        "VERY_DOUBTFUL",
+        "LOST"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR352",
+      "description": "Monthly Financial Return - Call Report (MFCR 352). Contains credit information, borrowing data, staff statistics, and examination details.",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "TYPE",
+        "DESCRIPTION",
+        "DATE_OF_PURCHASE",
+        "CARRYING_VALUE_AT_THE_BEGINNING_OF_THE_PERIOD",
+        "IMPAIRMENT",
+        "CARRYING_VALUE_AT_END_OF_THE_PERIOD"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR353",
+      "description": "SCHEDULE OF CHEQUES PURCHASED, FACTORED DEBTS, ADVANCES UNDER LEASES",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "OBLIGOR",
+        "PURPOSE",
+        "FACILITY_TYPE",
+        "SECTOR",
+        "CURRENCY_TYPE",
+        "SUBSECTOR",
+        "TENOR",
+        "DATE_GRANTED",
+        "MATURITY_DATE",
+        "APPROVED_AMOUNT",
+        "OUTSTANDING_AMOUNT",
+        "TERM_LOAN",
+        "OVERDRAFT",
+        "ADVANCES_UNDER_LEASE",
+        "BANKERS_ACCEPTANCES",
+        "COMMERCIAL_PAPERS",
+        "BILLS_DISCOUNTED",
+        "OTHERS",
+        "PERFORMING",
+        "WATCHLIST",
+        "SUBSTANDARD",
+        "DOUBTFUL",
+        "VERY_DOUBTFUL",
+        "LOST"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR354",
+      "description": "Monthly Financial Return - Call Report (MFCR 354). Contains credit information, borrowing data, staff statistics, and examination details.",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "NAME_OF_COMPANY",
+        "TYPE_OF_INVESTMENT",
+        "TYPE_OF_ENTITY",
+        "SECTOR",
+        "SUB_SECTOR",
+        "DATE_OF_PURCHASE",
+        "PURCHASE_VALUE",
+        "CARRYING_VALUE_AT_THE_BEGINNING",
+        "MARKET_VALUE_AT_THE_END_OF_THE_PERIOD",
+        "IMPAIRMENT"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR356",
+      "description": "Monthly Financial Return - Call Report (MFCR 356). Contains credit information, borrowing data, staff statistics, and examination details.",
+      "kind": "line-items",
+      "columns": [
+        "CODE",
+        "ITEM_DESCRIPTION",
+        "CARRYING_VALUE_AT_THE_BEGINNING_OF_THE_PERIOD_IN_NAIRA",
+        "CARRYING_VALUE_AT_THE_BEGINNING_OF_THE_PERIOD_IN_FCY",
+        "IMPAIRMENT_AMORTIZATION_IN_NAIRA",
+        "IMPAIRMENT_AMORTIZATIO_IN_FOREIGN_CURRENCY",
+        "CARRYING_AMOUNT_AT_THE_END_OF_THE_PERIOD_NET_IN_NAIRA",
+        "CARRYING_AMOUNT_AT_THE_END_OF_THE_PERIOD_NET_IN_FCY",
+        "TOTAL"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR357",
+      "description": "Monthly Financial Return - Call Report (MFCR 357). Contains credit information, borrowing data, staff statistics, and examination details.",
+      "kind": "line-items",
+      "columns": [
+        "CODE",
+        "ITEM_DESCRIPTION",
+        "AMOUNT_DENOMINATED_IN_NAIRA",
+        "AMOUNT_DENOMINATED_IN_FOREIGN_CURRENCIES",
+        "IMPAIRMENT_AMORTIZATION_DENOMINATED_IN_NAIRA",
+        "IMPAIRMENT_AMORTIZATION_DENOMINATED_IN_FOREIGN_CURRENCIES",
+        "CARRYING_AMOUNT_NET_DENOMINATED_IN_NIGERIA_NAIRA",
+        "CARRYING_AMOUNT_NET_DENOMINATED_IN_FOREIGN_CURRENCIES",
+        "TOTAL"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR358",
+      "description": "Monthly Financial Return - Call Report (MFCR 358). Contains credit information, borrowing data, staff statistics, and examination details.",
+      "kind": "line-items",
+      "columns": [
+        "CODE",
+        "ITEM_DESCRIPTION",
+        "CARRYING_AMOUNT_AT_THE_BEGINNING_OF_THE_PERIOD_IN_NAIRA",
+        "CARRYING_AMOUNT_AT_THE_BEGINNING_OF_THE_PERIOD_IN_FCY",
+        "IMPAIRMENT_AMORTIZATION_IN_NAIRA",
+        "IMPAIRMENT_AMORTIZATION_IN_FOREIGN_CURRENCY",
+        "CARRYING_AMOUNT_AT_THE_END_OF_THE_PERIOD_NET_IN_NAIRA",
+        "CARRYING_AMOUNT_AT_THE_END_OF_THE_PERIOD_NET_IN_FCY",
+        "TOTAL"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR360",
+      "description": "Monthly Financial Return - Call Report (MFCR 360). Contains credit information, borrowing data, staff statistics, and examination details.",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "TYPE",
+        "DESCRIPTION",
+        "LOCATION",
+        "DATE_OF_PURCHASE",
+        "DATE_TRANSFERRED_TO_HELD_FOR_SALE",
+        "PURCHASE_COST_NGN",
+        "PURCHASE_COST_FCY",
+        "CURRENT_BOOK_VALUE_NGN",
+        "CURRENT_BOOK_VALUE_FCY",
+        "IMPAIRMENT_NGN",
+        "IMPAIRMENT_FCY",
+        "CARRYING_AMOUNT_NET_NGN",
+        "CARRYING_AMOUNT_NET_FCY",
+        "TOTAL"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR362",
+      "description": "SCHEDULE OF PROPERTY PLANT AND EQUIPMENT",
+      "kind": "line-items",
+      "columns": [
+        "CODE",
+        "ITEM_DESCRIPTION",
+        "GROSS_AMOUNT",
+        "ADDITIONS",
+        "TRANSFERRED_TO_NON_CURRENT_ASSET_HELD_FOR_SALES",
+        "ACCUMULATED_DEPRECIATION_AMORTIZATION",
+        "ACCUMULATED_IMPAIRMENT_LOSS",
+        "REVALUATION_GAIN_LOSS",
+        "NET_CARRYING_AMOUNT"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR364",
+      "description": "SCHEDULE OF CONTINGENT ASSETS- DIRECT CREDIT SUBSTITUTE",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "CUSTOMER_NAME",
+        "CUSTOMER_ADDRESS",
+        "CUSTOMER_ID",
+        "TRANSACTION_CODE",
+        "TRANSACTION_TYPE",
+        "AMOUNT",
+        "CURRENCY_TYPE",
+        "DATE_BOOKED",
+        "MATURITY_DATE",
+        "BENEFICIARY",
+        "COLLATERAL_TYPE",
+        "COLLATERAL_VALUE",
+        "DATE_OF_LAST_RENEWAL",
+        "STATUS",
+        "EXPECTED_LOSS",
+        "SECTOR"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR366",
+      "description": "SCHEDULE OF CONTINGENT ASSETS- CERTAIN TRANSACTION RELATED CONTINGENT",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "TRANSACTION_CODE",
+        "CUSTOMER_ADDRESS",
+        "CUSTOMER_ID",
+        "CUSTOMER_NAME",
+        "TRANSACTION_TYPE",
+        "AMOUNT",
+        "CURRENCY_TYPE",
+        "DATE_BOOKED",
+        "MATURITY_DATE",
+        "BENEFICIARY",
+        "COLLATERAL_TYPE",
+        "COLLATERAL_VALUE",
+        "DATE_OF_LAST_RENEWAL",
+        "STATUS",
+        "EXPECTED_LOSS",
+        "SECTOR"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR368",
+      "description": "SCHEDULE OF CONTINGENT ASSETS- SHORT-TERM SELF-LIQUIDATING TRADE RELATED CONTINGENT",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "CUSTOMER_NAME",
+        "CUSTOMER_ADDRESS",
+        "CUSTOMER_ID",
+        "TRANSACTION_CODE",
+        "TRANSACTION_TYPE",
+        "AMOUNT",
+        "CURRENCY_TYPE",
+        "DATE_BOOKED",
+        "MATURITY_DATE",
+        "BENEFICIARY",
+        "COLLATERAL_TYPE",
+        "COLLATERAL_VALUE",
+        "DATE_OF_LAST_RENEWAL",
+        "STATUS",
+        "EXPECTED_LOSS",
+        "SECTOR"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR370",
+      "description": "SCHEDULE OF CONTINGENT ASSETS- FORWARD ASSET PURCHASE, FORWARD DEPOSITS AND PARTLY PAID SHARES AND SECURITIES, WHICH REPRESENT COMMITMENTS WITH CERTAIN DRAW DOWN",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "CUSTOMER_NAME",
+        "CUSTOMER_ADDRESS",
+        "CUSTOMER_ID",
+        "TRANSACTION_CODE",
+        "TRANSACTION_TYPE",
+        "AMOUNT",
+        "CURRENCY_TYPE",
+        "DATE_BOOKED",
+        "MATURITY_DATE",
+        "BENEFICIARY",
+        "COLLATERAL_TYPE",
+        "COLLATERAL_VALUE",
+        "DATE_OF_LAST_RENEWAL",
+        "STATUS",
+        "EXPECTED_LOSS",
+        "SECTOR"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR372",
+      "description": "SCHEDULE OF CONTINGENT ASSETS- NOTE ISSUANCE FACILITIES AND REVOLVING UNDERWRITING FACILITIES",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "CUSTOMER_NAME",
+        "CUSTOMER_ADDRESS",
+        "CUSTOMER_ID",
+        "TRANSACTION_CODE",
+        "TRANSACTION_TYPE",
+        "AMOUNT",
+        "CURRENCY_TYPE",
+        "DATE_BOOKED",
+        "MATURITY_DATE",
+        "BENEFICIARY",
+        "COLLATERAL_TYPE",
+        "COLLATERAL_VALUE",
+        "DATE_OF_LAST_RENEWAL",
+        "STATUS",
+        "EXPECTED_LOSS",
+        "SECTOR"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR374",
+      "description": "SCHEDULE OF CONTINGENT ASSETS- OTHER COMMITMENTS",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "CUSTOMER_NAME",
+        "CUSTOMER_ADDRESS",
+        "CUSTOMER_ID",
+        "TRANSACTION_CODE",
+        "TRANSACTION_TYPE",
+        "AMOUNT",
+        "CURRENCY_CODE",
+        "DATE_BOOKED",
+        "MATURITY_DATE",
+        "BENEFICIARY",
+        "COLLATERAL_TYPE",
+        "COLLATERAL_VALUE",
+        "DATE_OF_LAST_RENEWAL",
+        "STATUS",
+        "EXPECTED_LOSS",
+        "SECTOR"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR376",
+      "description": "SCHEDULE OF CONTINGENT ASSETS- SIMILARY COMMITMENTS WITH AN ORIGINAL MATURITY OF UP TO ONE YEAR, OR WHICH CAN BE UNCONDITIONALLY CANCELLED AT ANY TIME",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "CUSTOMER_NAME",
+        "CUSTOMER_ADDRESS",
+        "CUSTOMER_ID",
+        "TRANSACTION_CODE",
+        "TRANSACTION_TYPE",
+        "AMOUNT",
+        "CURRENCY_TYPE",
+        "DATE_BOOKED",
+        "MATURITY_DATE",
+        "BENEFICIARY",
+        "COLLATERAL_TYPE",
+        "COLLATERAL_VALUE",
+        "DATE_OF_LAST_RENEWAL",
+        "STATUS",
+        "EXPECTED_LOSS",
+        "SECTOR"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR377",
+      "description": "SCHEDULE OF BORROWINGS FROM BANKS",
+      "kind": "schedule",
+      "columns": [
+        "BANK_CODE",
+        "BANK_NAME",
+        "AMOUNT"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR379",
+      "description": "SCHEDULE OF BORROWINGS FROM FINANCE COMPANIES",
+      "kind": "schedule",
+      "columns": [
+        "FC_CODE",
+        "FC_FULL_NAME",
+        "AMOUNT"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR381",
+      "description": "SCHEDULE OF BORROWINGS FROM FINANCIAL INSTITUTIONS",
+      "kind": "schedule",
+      "columns": [
+        "FI_CODE",
+        "COUNTERPARTY",
+        "TYPE_OF_ENTITY",
+        "SECTOR",
+        "OUTSTANDING_AMOUNT",
+        "CONTRACT_NUMBER",
+        "TENOR",
+        "EFFECTIVE_DATE",
+        "MATURITY_DATE",
+        "INTEREST_RATE",
+        "UPFRONT_INTEREST_PAID",
+        "ACCRUED_INTEREST_PAYABLE",
+        "NUMBER_OF_ROLLOVER"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR385",
+      "description": "SCHEDULE OF DERIVATIVE FINANCIAL LIABILITIES",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "DERIVATIVE_FINANCIAL_LIABILITIES",
+        "NOTIONAL_AMOUNT",
+        "CARRYING_VALUE"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR387",
+      "description": "SCHEDULE OF LEASE LIABILITIES",
+      "kind": "line-items",
+      "columns": [
+        "CODE",
+        "ITEM_DESCRIPTION",
+        "AMOUNT_DENOMINATED_NAIRA",
+        "AMOUNT_DENOMINATED_IN_FOREIGN_CURRENCY",
+        "TOTAL"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR388",
+      "description": "BREAKDOWN OF OTHER LIABILITIES",
+      "kind": "line-items",
+      "columns": [
+        "CODE",
+        "NARRATION",
+        "AMOUNT"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR390",
+      "description": "SCHEDULE OF OTHER LIABILITIES",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "NARRATION",
+        "AMOUNT"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR395",
+      "description": "SCHEDULE OF WRITE-OFFS",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "NAME_OF_CUSTOMER",
+        "ACCOUNT_NUMBER",
+        "BORROWERS_CODE",
+        "LOAN_AMOUNT",
+        "INSIDER_RELATED",
+        "IMPAIRMENT",
+        "LOAN_TYPE",
+        "RECOVERED_AMOUNT",
+        "AMOUNT_OUTSTANDING"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "MFCR397",
+      "description": "SCHEDULE OF MONTHLY RECOVERIES FROM IMPAIRED ACCOUNTS",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "NAME_OF_CUSTOMER",
+        "ACCOUNT_NUMBER",
+        "LOAN_TYPE",
+        "INSIDER_RELATED",
+        "AMOUNT_WRITTEN_OFF",
+        "INSIDER_RELATED_RECOVERY",
+        "OPENING_RECOVERY_AMOUNT",
+        "AMOUNT_RECOVERED_DURING_THE_PERIOD",
+        "RECOVERED_AMOUNT",
+        "AMOUNT_OUTSTANDING"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "SFCR1900",
+      "description": "Semi-Annual Return On Investment In Shares",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "NAME_OF_THE_COMPANY_INVESTED_IN",
+        "INVESTMENT_TYPE",
+        "CBN_APPROVAL_DATE",
+        "PLACE_OF_INCORPORATION",
+        "BUSINESS_DESCRIPTION",
+        "PERCENTAGE_OWNERSHIP",
+        "ACQUISITION_DATE",
+        "QUOTED",
+        "NOMINAL_VALUE_PER_SHARE",
+        "COST_OF_PURCHASE",
+        "BOOK_VALUE",
+        "FAIR_VALUE",
+        "DATE_SOLD"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "SFCR1910",
+      "description": "SEMI-ANNUAL RETURN ON CORPORATE PROFILE",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "INSTITUTION_CODE",
+        "INSTITUTION_NAME",
+        "ADDRESS",
+        "CITY",
+        "STATE",
+        "LICENCE_NUMBER",
+        "TELEPHONE_ONE",
+        "TELEPHONE_TWO",
+        "FAX",
+        "NUMBER_OF_BRANCHES",
+        "LAST_DATE_OF_CBN_EXAM",
+        "NUMBER_OF_SENIOR_STAFF",
+        "NUMBER_OF_JUNIOR_STAFF",
+        "AUDIT_FIRM",
+        "AUDIT_FIRM_ADDRESS",
+        "INSTITUTION_EMAIL_ADDRESS"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "SFCR1920",
+      "description": "SEMI-ANNUAL RETURN ON BRANCH NETWORK",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "BRANCH_CODE",
+        "BRANCH_NAME",
+        "BRANCH_ADDRESS",
+        "CITY",
+        "STATE",
+        "DATE_OPENED",
+        "TOTAL_STAFF"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "SFCR1930",
+      "description": "SEMI-ANNUAL RETURN ON DIRECTORS",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "LAST_NAME",
+        "MIDDLE_NAME",
+        "FIRST_NAME",
+        "OFFICE_ADDRESS",
+        "OFFICE_PHONE",
+        "HOME_ADDRESS",
+        "HOME_PHONE",
+        "TITLE",
+        "BIRTH_DATE",
+        "PROFESSIONAL_OCCUPATION",
+        "ACADEMIC_QUALIFICATION",
+        "DATE_APPOINTED",
+        "MODE_OF_APPOINTMENT",
+        "ADDRESS",
+        "EXECUTIVE_NON_EXECUTIVE",
+        "DATE_RESIGNED",
+        "NAMES_OF_RELATED_COMPANIES",
+        "RC_BR_SR_NO",
+        "CRMS_NO"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "SFCR1940",
+      "description": "SEMI-ANNUAL RETURN ON SHAREHOLDERS",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "SHAREHOLDERS_CODE",
+        "SHAREHOLDERS_NAME",
+        "ADDRESS",
+        "PHONE",
+        "EMAIL",
+        "NATIONALITY",
+        "CATEGORY",
+        "NUMBER_OF_SHARES",
+        "PERCENTAGE_HOLDING",
+        "RELATED_PARTY",
+        "NAME_OF_RELATED_PARTY",
+        "RELATIONSHIP"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "SFCR1950",
+      "description": "SEMI-ANNUAL RETURN ON MANAGEMENT AND TOP OFFICIALS",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "FULL_NAMES",
+        "HOME_ADDRESS",
+        "PHONE_NUMBER",
+        "TITLE",
+        "BIRTH_DATE",
+        "ACADEMIC_QUALIFICATION",
+        "POSITION",
+        "DATE_APPOINTED"
+      ],
+      "uniqueCodes": false
+    },
+    {
+      "id": "SFCR1960",
+      "description": "SEMI-ANNUAL RETURN ON CLOSURE OF BRANCHES",
+      "kind": "schedule",
+      "columns": [
+        "S_N",
+        "BRANCH_CODE",
+        "BRANCH_NAME",
+        "DATE_OPENED",
+        "DATE_CLOSED",
+        "CBN_APPROVAL_DATE",
+        "REMARKS"
+      ],
+      "uniqueCodes": false
+    }
+  ]
+}

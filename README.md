@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FC Returns
 
-## Getting Started
+Web app for a CBN-licensed finance company's monthly return (MFCR/SFCR workbook, 76 sheets):
 
-First, run the development server:
+1. **Upload** the `.xlsx` exported from the reporting system.
+2. **Validate**: checks the structure, cell values, totals and schedule reconciliations. Errors show the sheet, column and row.
+3. **Store**: each upload for a period is saved as a new version with the original file. Uploading the same file twice is refused.
+4. **Dashboard**: KPI tiles from MFCR300/MFCR1000, with change vs the prior period and a trend chart.
+5. **Export XML**: only from a version with no errors. *Currently a draft format, see below.*
+6. **Mark as submitted**: records the filing. Submitted versions are locked in the database.
+
+## Status: what is and isn't done
+
+| Area | State |
+|---|---|
+| Parser, validation, KPIs, versioning, UI | Built and tested against the sample template |
+| XML export | **DRAFT. Not CBN's format.** It mirrors the Excel template one-to-one. Replace it with CBN's official spec before filing (see "Plugging in the official XML"). |
+| Supabase store | Written and type-checked, **not yet run against a live project** |
+| Login / roles | **Not built.** Required before real data goes in. |
+| KPI list | Proposed set. Needs management sign-off. |
+| Validation rules | Taken from the template's line descriptions. Each rule was checked against the template's own sample figures. Extend as CBN feedback comes in (`src/lib/returns/rules.ts`). |
+
+## Run locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm test          # 38 tests, against test/fixtures/sample-return.xlsx
+npm run dev       # http://localhost:3000 (uploads stored in ./.data)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deploy (Vercel + Supabase)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Create a Supabase project. Run `supabase/migrations/0001_returns.sql` in the SQL editor.
+2. Set `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` in Vercel (server-only), as in `.env.example`.
+3. Add authentication before go-live. Supabase Auth is the natural fit; the RLS policies are a starting point.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Choose the Supabase region and access rules with the client. This is regulated financial data.
 
-## Learn More
+## Code map
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/lib/returns/
+  parse.ts       workbook → normalised return (header block, 2 sheet shapes, code/date/zero handling)
+  template.json  expected sheets + columns (regenerate: npx tsx scripts/build-template.ts <template.xlsx>)
+  rules.ts       arithmetic + cross-sheet reconciliation rules
+  validate.ts    structure, cell, arithmetic and reconciliation checks
+  kpis.ts        dashboard KPI definitions
+  xml.ts         XML exporters (draft today; official one goes here)
+  ingest.ts      hash → parse → validate → KPIs → versioned save
+  trend.ts       KPI history per finance company
+src/lib/store/   FileStore (dev) and SupabaseStore (prod) behind one interface
+src/app/         pages + API routes (/api/returns, /xml, /original, /submit)
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Plugging in the official XML
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+When CBN provides the XSD or an accepted XML sample:
 
-## Deploy on Vercel
+1. Add `xsd/` and a new exporter in `src/lib/returns/xml.ts` implementing `XmlExporter` with `isDraft: false`.
+2. Validate the output against the XSD in tests and before every download.
+3. Point `defaultExporter` at it. The UI drops the "draft" labels automatically.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## When CBN changes the template
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Regenerate `template.json` from the new workbook. The validator then reports missing or extra sheets and columns. Review `rules.ts` for codes that moved.

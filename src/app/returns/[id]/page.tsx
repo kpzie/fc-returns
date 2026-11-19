@@ -1,0 +1,78 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { getStore } from "@/lib/store";
+import { loadTrend } from "@/lib/returns/trend";
+import { defaultExporter } from "@/lib/returns/xml";
+import KpiDashboard from "@/components/KpiDashboard";
+import IssuesTable from "@/components/IssuesTable";
+import SubmitButton from "@/components/SubmitButton";
+import { STATUS_LABEL, formatDateTime, formatPeriod } from "@/lib/format";
+
+export const dynamic = "force-dynamic";
+
+export default async function ReturnPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const store = getStore();
+  const rec = await store.get(id);
+  if (!rec) notFound();
+  const trend = await loadTrend(store, rec.fcCode);
+  const hasErrors = rec.status === "needs-fixes";
+
+  return (
+    <>
+      <div>
+        <Link href="/" className="small">
+          ← All returns
+        </Link>
+        <div className="row spread" style={{ marginTop: 8 }}>
+          <div>
+            <h1>
+              {rec.fcName} · {formatPeriod(rec.asAt)}
+            </h1>
+            <div className="row muted small">
+              <span className="mono">FC {rec.fcCode}</span>
+              <span>As at {rec.asAt}</span>
+              <span>Version {rec.version}</span>
+              <span>
+                {rec.fileName} · uploaded {formatDateTime(rec.uploadedAt)}
+              </span>
+              <span className={`badge ${rec.status}`}>{STATUS_LABEL[rec.status]}</span>
+              {rec.submittedAt && <span>Submitted {formatDateTime(rec.submittedAt)}</span>}
+            </div>
+          </div>
+          <div className="row">
+            <a className="btn" href={`/api/returns/${rec.id}/original`}>
+              Original .xlsx
+            </a>
+            {hasErrors ? (
+              <span className="btn" aria-disabled="true" title="Fix validation errors first">
+                Download XML
+              </span>
+            ) : (
+              <a className="btn primary" href={`/api/returns/${rec.id}/xml`}>
+                Download XML{defaultExporter.isDraft ? " (draft)" : ""}
+              </a>
+            )}
+            {rec.status !== "submitted" && <SubmitButton id={rec.id} disabled={hasErrors} />}
+          </div>
+        </div>
+      </div>
+
+      {defaultExporter.isDraft && (
+        <p className="alert warning" style={{ margin: 0 }}>
+          <strong>The XML is a draft.</strong> It mirrors the Excel template because CBN&apos;s official XML specification has not been
+          obtained yet. Do not file it with CBN until the official format is plugged in.
+        </p>
+      )}
+      {hasErrors && (
+        <p className="alert error" style={{ margin: 0 }}>
+          This version has {rec.counts.errors} validation error(s). Correct them in the reporting system, export the workbook again
+          and upload it — it will be stored as version {rec.version + 1}.
+        </p>
+      )}
+
+      <KpiDashboard kpis={rec.kpis} trend={trend} currentAsAt={rec.asAt} />
+      <IssuesTable issues={rec.issues} />
+    </>
+  );
+}
