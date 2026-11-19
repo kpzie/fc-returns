@@ -16,7 +16,7 @@ Run test + typecheck + lint + build before calling any change done.
 - `src/lib/returns/` — pure domain logic, no framework imports. Keep it that way.
   - `parse.ts` workbook → `ParsedReturn`. Every sheet: header block B2:C6 (CALLREPORT_ID, CALLREPORT_DESCRIPTION, FC_CODE, FC_NAME, AS_AT), column headers on the first non-empty row from 7 (usually 8; MFCR351 is 9), data until the first fully blank row.
   - `validate.ts` + `rules.ts` structure, cell type, arithmetic, cross-sheet reconciliation.
-  - `kpis.ts` dashboard KPIs · `xml.ts` exporters · `ingest.ts` hash→parse→validate→save · `trend.ts`
+  - `kpis.ts` dashboard KPIs · `xml.ts` CBN call report XML + zip · `ingest.ts` hash→parse→validate→save · `trend.ts`
 - `src/lib/auth/` — `roles.ts` (pure: `can` / `authorize`), `config.ts` (Supabase vs dev user), `session.ts` (`getActor`). Check roles in every page/route AND in domain functions; RLS checks again. Tests in `test/rls.test.ts` run all migrations in PGlite.
 - `src/lib/store/` — `ReturnStore` interface; `FileStore` (dev/tests) and `SupabaseStore` (prod). Schema: `supabase/migrations/`.
 - `src/app/` — Next.js 15 App Router pages + route handlers under `/api/returns`.
@@ -25,7 +25,11 @@ Run test + typecheck + lint + build before calling any change done.
 - **Identifiers are text.** FC_CODE/CODE arrive as floats (40196.0) → emit "40196". Institution codes keep leading zeros ("00057").
 - **Dates** are text in the workbook (`YYYY-MM-DD`, sometimes with `T..:..:..`). `*_TO_DATE` columns are amounts, not dates.
 - **Never fabricate CBN rules or formats.** Every rule in `rules.ts` must come from the template's line descriptions, CBN guidance, or client confirmation, and be checked against real figures. If unsure, ask — don't guess.
-- **The XML exporter is a DRAFT** (`isDraft: true`) mirroring the template. Do not mark any exporter non-draft unless it implements CBN's official spec and the output is validated against the XSD in tests.
+- **XML format = the CBN-accepted samples** in `test/fixtures/accepted-xml/` (69 MFCR files supplied by the client; no XSD exists).
+  One file per call report, zipped. `test/cbn-xml.test.ts` checks structure against all 69 and byte-for-byte equality where the
+  data matches — never weaken those tests to make a change pass. SFCR call reports have no accepted sample: they go in the
+  `SFCR-format-not-verified/` folder of the zip until the client confirms how they are filed.
+- `test/accepted-data.test.ts`: validation must raise no errors on CBN-accepted data. A new rule that fails it is wrong.
 - A return with validation errors can never be exported or marked submitted. Submitted versions are immutable (DB trigger).
 - Only `approver` can mark submitted; only `uploader` can upload. Users never write returns directly: inserts use the service role after server-side validation; submission goes through `fc_submit_return()` as the user.
 - Amounts are shown as reported — no currency/unit (₦ / ₦'000) is assumed until the client confirms.

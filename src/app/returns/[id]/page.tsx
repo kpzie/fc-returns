@@ -5,7 +5,6 @@ import { getActor } from "@/lib/auth/session";
 import { can } from "@/lib/auth/roles";
 import NoAccess from "@/components/NoAccess";
 import { loadTrend } from "@/lib/returns/trend";
-import { defaultExporter } from "@/lib/returns/xml";
 import KpiDashboard from "@/components/KpiDashboard";
 import IssuesTable from "@/components/IssuesTable";
 import SubmitButton from "@/components/SubmitButton";
@@ -62,7 +61,7 @@ export default async function ReturnPage({ params }: { params: Promise<{ id: str
               </span>
             ) : (
               <a className="btn primary" href={`/api/returns/${rec.id}/xml`}>
-                Download XML{defaultExporter.isDraft ? " (draft)" : ""}
+                Download XML (.zip)
               </a>
             )}
             {rec.status !== "submitted" && can(actor, "submit") && <SubmitButton id={rec.id} disabled={hasErrors} />}
@@ -70,10 +69,11 @@ export default async function ReturnPage({ params }: { params: Promise<{ id: str
         </div>
       </div>
 
-      {defaultExporter.isDraft && (
-        <p className="alert warning" style={{ margin: 0 }}>
-          <strong>The XML is a draft.</strong> It mirrors the Excel template because CBN&apos;s official XML specification has not been
-          obtained yet. Do not file it with CBN until the official format is plugged in.
+      {!hasErrors && (
+        <p className="alert info" style={{ margin: 0 }}>
+          The XML download is a zip with one file per call report, in the format of the CBN-accepted samples. The 7 SFCR call
+          reports are in a separate <span className="mono">SFCR-format-not-verified</span> folder: no accepted sample covers them yet,
+          so confirm whether and how they are filed before including them.
         </p>
       )}
       {hasErrors && (
