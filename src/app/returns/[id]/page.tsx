@@ -1,6 +1,9 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { getStore } from "@/lib/store";
+import { getActor } from "@/lib/auth/session";
+import { can } from "@/lib/auth/roles";
+import NoAccess from "@/components/NoAccess";
 import { loadTrend } from "@/lib/returns/trend";
 import KpiDashboard from "@/components/KpiDashboard";
 import IssuesTable from "@/components/IssuesTable";
@@ -11,7 +14,10 @@ export const dynamic = "force-dynamic";
 
 export default async function ReturnPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const store = getStore();
+  const actor = await getActor();
+  if (!actor) redirect("/login");
+  if (!can(actor, "view")) return <NoAccess />;
+  const store = await getStore();
   const rec = await store.get(id);
   if (!rec) notFound();
   const trend = await loadTrend(store, rec.fcCode);
@@ -34,9 +40,15 @@ export default async function ReturnPage({ params }: { params: Promise<{ id: str
               <span>Version {rec.version}</span>
               <span>
                 {rec.fileName} · uploaded {formatDateTime(rec.uploadedAt)}
+                {rec.uploadedBy && ` by ${rec.uploadedBy.email}`}
               </span>
               <span className={`badge ${rec.status}`}>{STATUS_LABEL[rec.status]}</span>
-              {rec.submittedAt && <span>Submitted {formatDateTime(rec.submittedAt)}</span>}
+              {rec.submittedAt && (
+                <span>
+                  Submitted {formatDateTime(rec.submittedAt)}
+                  {rec.submittedBy && ` by ${rec.submittedBy.email}`}
+                </span>
+              )}
             </div>
           </div>
           <div className="row">
@@ -52,7 +64,7 @@ export default async function ReturnPage({ params }: { params: Promise<{ id: str
                 Download XML (.zip)
               </a>
             )}
-            {rec.status !== "submitted" && <SubmitButton id={rec.id} disabled={hasErrors} />}
+            {rec.status !== "submitted" && can(actor, "submit") && <SubmitButton id={rec.id} disabled={hasErrors} />}
           </div>
         </div>
       </div>

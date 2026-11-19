@@ -1,6 +1,7 @@
 import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { assertSubmittable, sortSummaries, summarise, type ReturnRecord, type ReturnStore, type ReturnSummary } from "./types";
+import type { Actor } from "../auth/roles";
+import { assertSubmittable, personOf, sortSummaries, summarise, type ReturnRecord, type ReturnStore, type ReturnSummary } from "./types";
 
 /**
  * Local development store: one JSON file + the original .xlsx per upload.
@@ -59,10 +60,10 @@ export class FileStore implements ReturnStore {
     await writeFile(this.json(record.id), JSON.stringify(record));
   }
 
-  async markSubmitted(id: string): Promise<ReturnSummary> {
+  async markSubmitted(id: string, by: Actor): Promise<ReturnSummary> {
     const rec = await this.get(id);
     assertSubmittable(rec, id);
-    const updated: ReturnRecord = { ...(rec as ReturnRecord), status: "submitted", submittedAt: new Date().toISOString() };
+    const updated: ReturnRecord = { ...(rec as ReturnRecord), status: "submitted", submittedAt: new Date().toISOString(), submittedBy: personOf(by) };
     await writeFile(this.json(id), JSON.stringify(updated));
     return summarise(updated);
   }

@@ -1,8 +1,17 @@
 import type { Kpi } from "../returns/kpis";
 import type { Issue, ParsedReturn } from "../returns/types";
+import type { Actor } from "../auth/roles";
 
 /** needs-fixes: has validation errors · validated: clean, ready to export · submitted: filed with CBN */
 export type ReturnStatus = "needs-fixes" | "validated" | "submitted";
+
+/** Who did something, as recorded at the time (email kept so the audit trail survives account changes). */
+export interface Person {
+  id: string;
+  email: string;
+}
+
+export const personOf = (a: Actor): Person => ({ id: a.id, email: a.email });
 
 export interface ReturnSummary {
   id: string;
@@ -15,6 +24,8 @@ export interface ReturnSummary {
   fileSha256: string;
   uploadedAt: string;
   submittedAt: string | null;
+  uploadedBy: Person | null;
+  submittedBy: Person | null;
   counts: { errors: number; warnings: number };
 }
 
@@ -32,8 +43,8 @@ export interface ReturnStore {
   findByHash(sha256: string): Promise<ReturnSummary | null>;
   latestVersion(fcCode: string, asAt: string): Promise<number>; // 0 when none
   insert(record: ReturnRecord, original: Buffer): Promise<void>;
-  /** Refuses a return that still has validation errors. */
-  markSubmitted(id: string): Promise<ReturnSummary>;
+  /** Refuses a return that still has validation errors. Callers must authorize first (see submitReturn). */
+  markSubmitted(id: string, by: Actor): Promise<ReturnSummary>;
 }
 
 export function sortSummaries<T extends ReturnSummary>(rows: T[]): T[] {
@@ -52,6 +63,8 @@ export function summarise(r: ReturnRecord): ReturnSummary {
     fileSha256: r.fileSha256,
     uploadedAt: r.uploadedAt,
     submittedAt: r.submittedAt,
+    uploadedBy: r.uploadedBy ?? null,
+    submittedBy: r.submittedBy ?? null,
     counts: r.counts,
   };
 }

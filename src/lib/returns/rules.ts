@@ -2,8 +2,10 @@
  * Arithmetic and reconciliation rules for the FC monthly return.
  *
  * Source: derived from the line descriptions in the CBN FC return template
- * (e.g. "TOTAL CASH", "Specify MFCR 304"). Every rule below was checked
- * against the template's own sample figures, which reconcile for these lines.
+ * (e.g. "TOTAL CASH", "Specify MFCR 304"). Error-level rules were checked
+ * against both the template's sample figures and CBN's accepted call reports
+ * (test/fixtures/accepted-xml). Warning-level reconciliation rules hold in the
+ * accepted call reports only: the sample's schedules are placeholders.
  * CBN has not published a rulebook for this return, so treat this list as
  * ours to maintain: add rules as CBN feedback or guidance confirms them.
  */
@@ -23,6 +25,11 @@ export interface ReconciliationRule {
   line: { sheet: string; codes: string[]; column: string }; // sum of these codes
   schedule: { sheets: string[]; column: string }; // sum of this column across sheets
   label: string;
+  /**
+   * "error" (default) blocks export. "warning" is for rules confirmed on CBN's accepted call reports but not
+   * yet on a real filled workbook: shown to users, does not block. Promote once a real return confirms them.
+   */
+  severity?: "error" | "warning";
 }
 
 const BS = { sheet: "MFCR300", columns: ["AMOUNT"] };
@@ -101,6 +108,161 @@ export const RECONCILIATION_RULES: ReconciliationRule[] = [
     line: { sheet: "MFCR300", codes: ["20180"], column: "AMOUNT" },
     schedule: { sheets: ["MFCR381"], column: "OUTSTANDING_AMOUNT" },
     label: "Total borrowings = MFCR381 schedule",
+  },
+  // Checked against the sample workbook AND CBN's accepted call reports (test/fixtures/accepted-xml): both reconcile.
+  {
+    line: { sheet: "MFCR300", codes: ["10380"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR316"], column: "CARRYING_VALUE" },
+    label: "Total derivative financial assets = MFCR316 carrying value",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["11730", "11740"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR338"], column: "OUTSTANDING_AMOUNT" },
+    label: "Loans to other financial institutions = MFCR338 schedule",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["11750", "11760", "11770", "11780"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR346"], column: "TOTAL_OUTSTANDING" },
+    label: "Loans to subsidiary and associate companies = MFCR346 schedule",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["11790"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR348"], column: "OUTSTANDING_AMOUNT" },
+    label: "Loans to other entities outside Nigeria = MFCR348 schedule",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["11870", "11890", "11900"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR353"], column: "OUTSTANDING_AMOUNT" },
+    label: "Cheques purchased, advances under leases and factored debts = MFCR353 schedule",
+  },
+
+  // Warnings: reconcile in CBN's accepted call reports (test/fixtures/accepted-xml) but not in the sample
+  // workbook, whose schedules hold placeholder values. Promote to errors once a real filled return confirms them.
+  {
+    line: { sheet: "MFCR300", codes: ["10520"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR318"], column: "NET_CARRYING_VALUE" },
+    label: "Net treasury bills = MFCR318 net carrying value",
+    severity: "warning",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["11250", "11370"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR330"], column: "NET_CARRYING_VALUE" },
+    label: "Net treasury certificates and CBN OMO bills = MFCR330 net carrying value",
+    severity: "warning",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["11460"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR334"], column: "AMOUNT" },
+    label: "Certificates of deposit held = MFCR334 schedule",
+    severity: "warning",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["11850"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR351"], column: "OUTSTANDING_AMOUNT" },
+    label: "Loans to governments in Nigeria = MFCR351 schedule",
+    severity: "warning",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["11920"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR350"], column: "IMPAIRMENT_BALANCE_CLOSING" },
+    label: "Impairment on loans and leases = MFCR350 closing impairment",
+    severity: "warning",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["11930"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR350"], column: "NET_CARRYING_AMOUNT" },
+    label: "Net loans/receivables and leases = MFCR350 net carrying amount",
+    severity: "warning",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["12080"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR352"], column: "CARRYING_VALUE_AT_END_OF_THE_PERIOD" },
+    label: "Net other investments = MFCR352 closing carrying value",
+    severity: "warning",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["12120"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR354"], column: "IMPAIRMENT" },
+    label: "Impairment of investment in subsidiaries/associates = MFCR354 impairment",
+    severity: "warning",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["12170"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR356"], column: "TOTAL" },
+    label: "Other assets net = MFCR356 total",
+    severity: "warning",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["12200"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR358"], column: "TOTAL" },
+    label: "Net intangible assets = MFCR358 total",
+    severity: "warning",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["12240"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR360"], column: "TOTAL" },
+    label: "Net non-current assets held for sale = MFCR360 total",
+    severity: "warning",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["20320"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR385"], column: "CARRYING_VALUE" },
+    label: "Total derivative financial liabilities = MFCR385 carrying value",
+    severity: "warning",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["20340"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR387"], column: "TOTAL" },
+    label: "Other liabilities = MFCR387 total",
+    severity: "warning",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["20610"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR390"], column: "AMOUNT" },
+    label: "Other reserves = MFCR390 schedule",
+    severity: "warning",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["20710"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR364"], column: "AMOUNT" },
+    label: "Direct credit substitutes = MFCR364 schedule",
+    severity: "warning",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["20720"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR366"], column: "AMOUNT" },
+    label: "Transaction-related contingent items = MFCR366 schedule",
+    severity: "warning",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["20730"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR368"], column: "AMOUNT" },
+    label: "Trade-related contingencies = MFCR368 schedule",
+    severity: "warning",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["20740"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR370"], column: "AMOUNT" },
+    label: "Forward asset purchases and partly paid shares = MFCR370 schedule",
+    severity: "warning",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["20750"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR372"], column: "AMOUNT" },
+    label: "Note issuance and revolving underwriting facilities = MFCR372 schedule",
+    severity: "warning",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["20760"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR374"], column: "AMOUNT" },
+    label: "Other commitments over one year = MFCR374 schedule",
+    severity: "warning",
+  },
+  {
+    line: { sheet: "MFCR300", codes: ["20770"], column: "AMOUNT" },
+    schedule: { sheets: ["MFCR376"], column: "AMOUNT" },
+    label: "Commitments up to one year = MFCR376 schedule",
+    severity: "warning",
   },
 ];
 

@@ -82,6 +82,28 @@ describe("validateReturn", () => {
     expect(issue.message).toMatch(/10240/);
   });
 
+  // "Specify MFCR xxx" lines that reconcile in both the sample workbook and CBN's accepted call reports.
+  it.each([
+    ["MFCR316", "CARRYING_VALUE", "10380"],
+    ["MFCR338", "OUTSTANDING_AMOUNT", "11730"],
+    ["MFCR346", "TOTAL_OUTSTANDING", "11750"],
+    ["MFCR348", "OUTSTANDING_AMOUNT", "11790"],
+    ["MFCR353", "OUTSTANDING_AMOUNT", "11870"],
+  ])("flags %s %s that does not reconcile to MFCR300 line %s", (schedule, column, code) => {
+    const r = sample();
+    const row = sheet(r, schedule).rows[0];
+    row[column] = (row[column] as number) + 1000;
+    const issue = validateReturn(r).issues.find((i) => i.rule === "reconciliation" && i.message.includes(schedule));
+    expect(issue?.message).toMatch(new RegExp(code));
+  });
+
+  it("reports the sample's placeholder schedules as reconciliation warnings, not errors", () => {
+    const issues = validateReturn(sample()).issues.filter((i) => i.rule === "reconciliation");
+    expect(issues.length).toBeGreaterThan(0);
+    expect(issues.every((i) => i.severity === "warning")).toBe(true);
+    expect(issues.some((i) => i.message.includes("MFCR318"))).toBe(true);
+  });
+
   it("tolerates rounding differences under 1 kobo", () => {
     const r = sample();
     const cash = line(r, "MFCR300", "10140");

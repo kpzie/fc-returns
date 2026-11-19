@@ -1,4 +1,6 @@
 import { getStore } from "@/lib/store";
+import { AuthError } from "@/lib/auth/roles";
+import { requireActor } from "@/lib/auth/guard";
 import { defaultExporter, packageXmlZip, zipFileName } from "@/lib/returns/xml";
 
 export const runtime = "nodejs";
@@ -6,7 +8,13 @@ export const runtime = "nodejs";
 /** Zip of one CBN call report XML per sheet. Refused while the return has validation errors. */
 export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  const rec = await getStore().get(id);
+  try {
+    await requireActor("view");
+  } catch (e) {
+    if (e instanceof AuthError) return new Response(e.message, { status: e.status });
+    throw e;
+  }
+  const rec = await (await getStore()).get(id);
   if (!rec) return new Response("Not found", { status: 404 });
   if (rec.status === "needs-fixes") {
     return new Response("This return has validation errors. Fix them in the source and re-upload before exporting XML.", { status: 409 });
